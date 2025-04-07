@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "GodotSimpleTD": {
+      "commandName": "Project",
+      "commandLineArgs": "--path . --verbose",
+      "workingDirectory": "."
+    },
+    "配置文件 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\Administrator\\Downloads\\Godot_v4.4-stable_mono_win64\\Godot_v4.4-stable_mono_win64.exe",
+      "commandLineArgs": "--path . --verbose",
+      "workingDirectory": ".",
+      "nativeDebugging": true
+    }
+  }
+}

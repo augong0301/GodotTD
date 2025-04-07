@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://ijftndipiig0"]
+
+[ext_resource type="Script" uid="uid://bw03ef6ay7qmu" path="res://src/entity/Enemy.cs" id="1_d5awm"]
+[ext_resource type="Texture2D" uid="uid://6bc3xfjvjlge" path="res://assets/PNG/Default size/towerDefense_tile245.png" id="2_smg2d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5awm"]
+radius = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smg2d"]
+bg_color = Color(0.786777, 0, 0.197908, 1)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ad01i"]
+playback_mode = 1
+random_pitch = 7.67
+random_volume_offset_db = 24.27
+
+[node name="Enemy" type="PathFollow2D"]
+script = ExtResource("1_d5awm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("2_smg2d")
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d5awm")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+offset_bottom = -28.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_smg2d")
+value = 30.0
+show_percentage = false
+
+[node name="Audio Die" type="AudioStreamPlayer2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-2, 0)
+stream = SubResource("AudioStreamRandomizer_ad01i")
+volume_db = 1.955
