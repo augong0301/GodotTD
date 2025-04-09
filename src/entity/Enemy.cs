@@ -5,6 +5,7 @@ using System.Diagnostics;
 public partial class Enemy : PathFollow2D
 {
 	private ProgressBar _progressBar;
+	private Sprite2D _sprite;
 	private readonly float maxHP = 120;
 	private float _hp;
 
@@ -36,7 +37,7 @@ public partial class Enemy : PathFollow2D
 		}
 	}
 
-	public float Speed { get; set; } = 40;
+	public float Speed { get; set; } = 80;
 
 	public Enemy()
 	{
@@ -47,6 +48,9 @@ public partial class Enemy : PathFollow2D
 	public override void _Ready()
 	{
 		_progressBar = GetNode<ProgressBar>("ProgressBar");
+		_progressBar.MaxValue = maxHP;
+		_progressBar.Visible = false;
+		_sprite = GetNode<Sprite2D>("Sprite2D");
 		Debug.WriteLine("Enemy Ready");
 		HP = maxHP;
 	}
@@ -55,6 +59,8 @@ public partial class Enemy : PathFollow2D
 	public override void _Process(double delta)
 	{
 		Progress += Speed * (float)delta;
+		_sprite.Rotation = Rotation;
+		Rotation = 0;
 	}
 
 	private void Die() { }
