@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjc0sm1gx1ley"]
+[gd_scene load_steps=9 format=3 uid="uid://bjc0sm1gx1ley"]
 
+[ext_resource type="Script" uid="uid://damoicng7wng" path="res://Main.cs" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cp57irjnevuwl" path="res://assets/Tilesheet/towerDefense_tilesheet.png" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://dxxdj1gjfsuvm" path="res://assets/Tilesheet/towerDefense_tilesheet@2.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ijftndipiig0" path="res://src/entity/enemy.tscn" id="3_h2yge"]
@@ -1516,6 +1517,8 @@ _data = {
 point_count = 3
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+Enemies = Array[PackedScene]([ExtResource("3_h2yge")])
 
 [node name="TileMap" type="TileMap" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -1529,10 +1532,6 @@ layer_1/tile_data = PackedInt32Array(1, 65541, 9, 65537, 65541, 9, 131073, 65541
 [node name="Path2D" type="Path2D" parent="TileMap"]
 curve = SubResource("Curve2D_1bvp3")
 
-[node name="Enemy" parent="TileMap/Path2D" instance=ExtResource("3_h2yge")]
-position = Vector2(160, 0)
-rotation = 1.5708
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -1544,3 +1543,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="TimerSpawnEnemy" type="Timer" parent="."]

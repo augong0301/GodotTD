@@ -36,9 +36,9 @@ public partial class Enemy : PathFollow2D
 		}
 	}
 
-	public float Speed { get; set; }
+	public float Speed { get; set; } = 40;
 
-	public Enemy(float maxHP)
+	public Enemy()
 	{
 
 	}
@@ -46,15 +46,15 @@ public partial class Enemy : PathFollow2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
-		HP = maxHP;
+		_progressBar = GetNode<ProgressBar>("ProgressBar");
 		Debug.WriteLine("Enemy Ready");
-		_progressBar = GetNode<ProgressBar>("Child");
+		HP = maxHP;
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-
+		Progress += Speed * (float)delta;
 	}
 
 	private void Die() { }
