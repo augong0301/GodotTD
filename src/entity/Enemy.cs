@@ -9,7 +9,7 @@ public partial class Enemy : PathFollow2D
 	private Sprite2D _sprite;
 	private readonly float maxHP = 120;
 	private float _hp;
-	public  Action<float> DoDamage;
+	public Action<float> DoDamage;
 
 
 	public float Attack { get; set; }
@@ -33,7 +33,7 @@ public partial class Enemy : PathFollow2D
 		{
 			_progressBar.Show();
 		}
-		if (hp <=0)
+		if (hp <= 0)
 		{
 			Die();
 		}
@@ -43,7 +43,7 @@ public partial class Enemy : PathFollow2D
 
 	public Enemy()
 	{
-			}
+	}
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
