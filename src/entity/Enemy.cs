@@ -10,6 +10,7 @@ public partial class Enemy : PathFollow2D
 	private readonly float maxHP = 120;
 	private float _hp;
 	public Action<float> DoDamage;
+	private AudioStreamPlayer2D DieAudio;
 
 
 	public float Attack { get; set; }
@@ -29,7 +30,7 @@ public partial class Enemy : PathFollow2D
 	private void OnHPChanged(float hp)
 	{
 		_progressBar.Value = hp;
-		if (hp < maxHP && _progressBar.Visible)
+		if (hp < maxHP)
 		{
 			_progressBar.Show();
 		}
@@ -49,6 +50,7 @@ public partial class Enemy : PathFollow2D
 	public override void _Ready()
 	{
 		_progressBar = GetNode<ProgressBar>("ProgressBar");
+		DieAudio = GetNode<AudioStreamPlayer2D>("DieAudio");
 		_progressBar.MaxValue = maxHP;
 		_progressBar.Visible = false;
 		_sprite = GetNode<Sprite2D>("Sprite2D");
@@ -81,6 +83,10 @@ public partial class Enemy : PathFollow2D
 		HP -= damage;
 	}
 
-	private void Die() { }
+	private void Die()
+	{
+		DieAudio.Play();
+		QueueFree();
+	}
 
 }

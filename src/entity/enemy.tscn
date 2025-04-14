@@ -38,7 +38,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_smg2d")
 value = 30.0
 show_percentage = false
 
-[node name="Audio Die" type="AudioStreamPlayer2D" parent="."]
+[node name="DieAudio" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-2, 0)
 stream = SubResource("AudioStreamRandomizer_ad01i")

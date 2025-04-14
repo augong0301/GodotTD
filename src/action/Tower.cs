@@ -26,7 +26,7 @@ public partial class Tower : Node2D
 	public int CurrentBulletCount { get; set; }
 
 	[Export]
-	public int Damage { get; set; }
+	public int Damage { get; set; } = 1000;
 
 	public void Attack()
 	{
@@ -64,7 +64,7 @@ public partial class Tower : Node2D
 		DefaultBullet = scene.Instantiate<Bullet>() ?? throw new Exception("DefaultBullet cast failed");
 		if (DefaultBullet != null)
 		{
-			DefaultBullet.Damage = Damage;
+			DefaultBullet.SetDamage(Damage);
 			AddChild(DefaultBullet);
 
 			DefaultBullet.Init(enemy);
@@ -95,6 +95,7 @@ public partial class Tower : Node2D
 
 		Area.AreaEntered += _area_AreaEntered;
 		Area.AreaExited += _area_AreaExited;
+		CurrentBulletCount = BulletCount;
 	}
 
 	private void OnReloadComplete()
@@ -132,6 +133,10 @@ public partial class Tower : Node2D
 			{
 				Fort.LookAt(Enemies[0].GlobalPosition);
 				Attack();
+			}
+			else
+			{
+				Enemies.RemoveAt(0);
 			}
 		}
 	}
