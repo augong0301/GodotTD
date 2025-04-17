@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://bvqejemj2va8q"]
+
+[ext_resource type="PackedScene" uid="uid://bm6uwsv0ohpmm" path="res://src/UI/W_Tower.tscn" id="1_h15om"]
+[ext_resource type="Script" uid="uid://d03vc3drtnond" path="res://src/UI/GameForm.cs" id="1_m5av7"]
+
+[node name="GameForm" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5av7")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "金币：9999"
+
+[node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_h15om")]
+layout_mode = 2

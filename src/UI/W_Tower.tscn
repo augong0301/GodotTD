@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm6uwsv0ohpmm"]
+
+[ext_resource type="Script" uid="uid://c6hyt0hgg7bve" path="res://src/UI/WTower.cs" id="1_3yqrn"]
+[ext_resource type="PackedScene" uid="uid://bu7x6qtk0tcs8" path="res://src/action/Tower.tscn" id="1_k06ul"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lquwl"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_3yqrn")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lquwl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(32, 32)
+render_target_update_mode = 4
+
+[node name="Node2D" type="Node2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+position = Vector2(16, 16)
+scale = Vector2(0.5, 0.5)
+
+[node name="Tower" parent="MarginContainer/SubViewportContainer/SubViewport/Node2D" instance=ExtResource("1_k06ul")]
