@@ -46,5 +46,5 @@ size_flags_vertical = 10
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="MarginContainer" parent="VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_h15om")]
+[node name="WTower" parent="VBoxContainer/MarginContainer2/HBoxContainer" instance=ExtResource("1_h15om")]
 layout_mode = 2

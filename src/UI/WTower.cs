@@ -1,14 +1,18 @@
 using Godot;
 using System;
+using static System.Formats.Asn1.AsnWriter;
 
 public partial class WTower : MarginContainer
 {
 	public Action OnMouseLeftClick;
 
+	public PackedScene P_TOWER { get; set; }
+
 
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		P_TOWER =  ResourceLoader.Load<PackedScene>("res://src/action/Tower.tscn");
 		GuiInput += WTower_GuiInput;
 	}
 
