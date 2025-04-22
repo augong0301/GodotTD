@@ -75,15 +75,59 @@ public partial class Main : Node2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		UpdateTowerUI();
+		PreviewTower();
 	}
 
-	private void UpdateTowerUI()
+	private void PreviewTower()
 	{
 		if (Tower == null) return;
 
 		var tile = TileMap.LocalToMap(TileMap.GetLocalMousePosition());
 		Tower.Position = TileMap.MapToLocal(tile);
 
+	}
+
+	public override void _UnhandledInput(InputEvent input)
+	{
+		if (Tower == null) return;
+		if (input is InputEventMouseButton ms)
+		{
+			if (ms.IsPressed() && ms.ButtonIndex == MouseButton.Left)
+			{
+				// 处理放置tower
+				SetTower();
+			}
+			else if (ms.IsPressed() && ms.ButtonIndex == MouseButton.Right)
+			{
+				// cancel
+				CancelPreviewTower();
+			}
+
+
+		}
+		base._UnhandledInput(input);
+	}
+
+	private void SetTower()
+	{
+		var mousePos = TileMap.LocalToMap(TileMap.GetLocalMousePosition());
+		if (CanSetTowerToPos(mousePos))
+		{
+			// play audio
+			TileMap.SetCell(1, mousePos);
+		}
+	}
+
+	private bool CanSetTowerToPos(Vector2I pos)
+	{
+		return true;
+	}
+
+	private void CancelPreviewTower()
+	{
+		if (Tower == null) return;
+
+		Tower.QueueFree();
+		TileMap.RemoveChild(Tower);
 	}
 }
